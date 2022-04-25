@@ -1,9 +1,11 @@
 import React from 'react';
-import { TrackArray } from '../../constant/TrackArray';
+import { TrackArray } from '../../audioFiles/TrackArray';
 //with default i dont need the {}
 import '../playList/PlayList.css';
 import AudioFile from '../audioFile/AudioFile';
 import Buttons from '../buttons/Buttons';
+import Controlers from '../controlers/Controlers';
+import '../playList/PlayList.css';
 
 function PlayList() {
   return (
@@ -15,7 +17,7 @@ function PlayList() {
           </li>
         ))}
       </ul>
-      <Buttons></Buttons>
+      <Controlers></Controlers>
     </div>
   );
 }

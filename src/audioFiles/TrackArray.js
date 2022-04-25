@@ -10,7 +10,7 @@ import Uuhovoc from '../audioFiles/UUHOVOC.mp3';
 
 export const TrackArray = [
   { audio: new Audio(Alltrack), name: 'sivan', color: '#facfd2' },
-  { audio: new Audio(Bvoc), color: '#6EE7B7' },
+  { audio: new Audio(Bvoc), name: 'sivan', color: '#6EE7B7' },
   { audio: new Audio(Drums), color: '#rCASAS' },
   { audio: new Audio(Hehevoc), color: '#E1EFF6' },
   { audio: new Audio(Highvoc), color: '#0A804' },
