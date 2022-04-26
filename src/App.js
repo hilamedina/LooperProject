@@ -15,6 +15,7 @@ function App() {
 
   return (
     <>
+      <header className="header">Loop Machine</header>
       <PlayList></PlayList>
       {/* <div className="songs-container"> */}
       {/* {audioAll && <Songs nameOfAudio={audioAll}></Songs>} */}

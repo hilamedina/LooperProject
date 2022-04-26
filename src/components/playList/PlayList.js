@@ -13,7 +13,7 @@ function PlayList() {
       <ul className="song_containers">
         {TrackArray.map((song, index) => (
           <li className="song" key={index}>
-            <AudioFile song={song} />
+            <AudioFile song={song} index={index} />
           </li>
         ))}
       </ul>

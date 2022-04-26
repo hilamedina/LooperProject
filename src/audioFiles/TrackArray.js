@@ -9,13 +9,13 @@ import Tambourine from '../audioFiles/TAMBOURINE.mp3';
 import Uuhovoc from '../audioFiles/UUHOVOC.mp3';
 
 export const TrackArray = [
-  { audio: new Audio(Alltrack), name: 'All Track', color: '#facfd2' },
-  { audio: new Audio(Bvoc), name: 'Bvoc', color: '#6EE7B7' },
-  { audio: new Audio(Drums), name: 'Drums', color: '#rCASAS' },
-  { audio: new Audio(Hehevoc), name: 'Hehe Voc', color: '#E1EFF6' },
-  { audio: new Audio(Highvoc), name: 'High Voc', color: '#0A804' },
-  { audio: new Audio(Jibrish), name: 'Jibrish', color: '#F9A8D4' },
-  { audio: new Audio(Lead), name: 'Lead', color: '#8B5CF6' },
-  { audio: new Audio(Tambourine), name: 'Tambourine', color: '#82DEF4' },
-  { audio: new Audio(Uuhovoc), name: 'Uuho Voc', color: '#80FFE8' },
+  { audio: new Audio(Alltrack), name: 'All Track', color: '#046dc8' },
+  { audio: new Audio(Bvoc), name: 'Bvoc', color: '#1184a7' },
+  { audio: new Audio(Drums), name: 'Drums', color: '#15a2a2' },
+  { audio: new Audio(Hehevoc), name: 'Hehe Voc', color: '#6fb1a0' },
+  { audio: new Audio(Highvoc), name: 'High Voc', color: '#B4418E' },
+  { audio: new Audio(Jibrish), name: 'Jibrish', color: '#D94A8c' },
+  { audio: new Audio(Lead), name: 'Lead', color: '#EA5157' },
+  { audio: new Audio(Tambourine), name: 'Tambourine', color: '#FE7434' },
+  { audio: new Audio(Uuhovoc), name: 'Uuho Voc', color: '#FEA802' },
 ];
