@@ -1,14 +1,33 @@
 .audio-file{
     display:flex;
-    justify-content: center;
-    align-content: center;
-    /* border:1px solid blue; */
-    width:500px;
-    height:30px;
+    justify-content: flex-start;
+    align-content:center;
+    width:630px;
+    height:40px;
+    padding:5px;
+    border-radius:10px;
+    margin-bottom:5px;
 }
-.audio-File-container{
-   width:500px;
+
+.title-button-container{
+    display:flex;
+    align-items:center;
+    width:100%;
 }
+
 li{
 list-style:none;
 }
+.audio-file-title{
+    display:flex;
+    margin-left: 15px;
+}
+
+.audio-File-button{
+   background-color: transparent;
+   border:none;
+   font-size:1.2rem;
+
+
+}
+
