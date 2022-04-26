@@ -1,3 +1,4 @@
+import { clear } from '@testing-library/user-event/dist/clear';
 import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import { TrackArray } from '../../audioFiles/TrackArray';
@@ -7,22 +8,40 @@ function Controlers({}) {
   const [audioFilesIsLoop, setAudioFilesIsLoop] = useState(false);
   const [audioFilesPlay, setAudioFilesPlay] = useState(false);
   const [audioFilesStop, setAudioFilesStop] = useState(false);
-  //   const [audioFilesMute, setAudioFilesMute] = useState(false);
-  const audioRef = useRef();
-  console.log();
+  const [audioFilesCurrentTime, setAudioFilesCurrentTime] = useState(0);
+
+  let timerId = 0;
+  const startCountingTime = () => {
+    console.log(Math.floor(TrackArray[0].audio.currentTime));
+    timerId = setInterval(() => setCorrectTime(), 1000);
+    console.log('start timer');
+  };
+
+  const setCorrectTime = () => {
+    console.log(audioFilesPlay);
+    // if (audioFilesPlay) {
+    console.log('check');
+    console.log(Math.floor(TrackArray[0].audio.currentTime));
+    setAudioFilesCurrentTime(Math.floor(TrackArray[0].audio.currentTime));
+    // }
+  };
 
   const isAudioFilePlay = () => {
-    const play = audioFilesPlay;
-    setAudioFilesPlay(!play);
-    TrackArray.forEach((song) => {
-      // console.log(song.audio);
-      song.audio.play();
-    });
-    if (play) {
-      setAudioFilesPlay(!play);
+    console.log('changing play value old value=' + audioFilesPlay);
+    const play = audioFilesPlay; //play =false, audioFilesPlay=false
+    setAudioFilesPlay(!play); //play =false, audioFilesPlay=true after
+    // console.log('is it true ?' + audioFilesPlay);
+    if (!play) {
+      startCountingTime();
+      TrackArray.forEach((song) => {
+        song.audio.play();
+      });
+    } else {
       TrackArray.forEach((song) => {
         song.audio.pause();
       });
+      console.log('clear interval');
+      clearInterval(timerId);
     }
   };
 
@@ -31,8 +50,10 @@ function Controlers({}) {
     setAudioFilesStop(true);
     TrackArray.forEach((song) => {
       song.audio.pause();
-      song.audio.currentTime = 0;
     });
+    console.log('clear interval');
+    clearInterval(timerId);
+    setAudioFilesCurrentTime(0);
   };
 
   const isAudioFileLoop = () => {
@@ -65,10 +86,6 @@ function Controlers({}) {
   }
 
   const audioDuration = Math.floor(TrackArray[0].audio.duration);
-  console.log(audioDuration);
-  // const timeClick = () => {
-  //   console.log(TrackArray[0].audio.currentTime);
-  // };
 
   return (
     <div>
@@ -77,6 +94,7 @@ function Controlers({}) {
         isAudioFileStop={isAudioFileStop}
         isAudioFileLoop={isAudioFileLoop}
         audioDuration={audioDuration}
+        audioFilesCurrentTime={audioFilesCurrentTime}
         // timeClick={timeClick}
         formatSecondsAsTime={formatSecondsAsTime}
         audioFilesIsLoop={audioFilesIsLoop}

@@ -8,6 +8,7 @@ import { MdPauseCircleOutline } from 'react-icons/md';
 import '../buttons/Buttons.css';
 
 function Buttons({
+  audioFilesCurrentTime,
   isAudioFilePlay,
   isAudioFileStop,
   isAudioFileLoop,
@@ -38,9 +39,9 @@ function Buttons({
       </button>
       <button className="btn" onClick={timeClick}>
         <p>
-          {formatSecondsAsTime(audioDuration).includes('NaN')
+          {formatSecondsAsTime(audioFilesCurrentTime).includes('NaN')
             ? '00:00'
-            : formatSecondsAsTime(audioDuration)}
+            : formatSecondsAsTime(audioFilesCurrentTime)}
         </p>
       </button>
     </div>
