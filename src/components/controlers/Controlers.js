@@ -9,6 +9,22 @@ function Controlers({}) {
   const [audioFilesPlay, setAudioFilesPlay] = useState(false);
   const [audioFilesStop, setAudioFilesStop] = useState(false);
   const [audioFilesCurrentTime, setAudioFilesCurrentTime] = useState(0);
+  // const [audioFilesCurrentTime, setAudioFilesCurrentTime] = useState(0);
+  const sliderBar = useRef();
+  const requestRef = useRef();
+
+  const audioDuration = Math.floor(TrackArray[0].audio.duration);
+  useEffect(() => {
+    const trackTime = audioDuration;
+    // setDuration(trackTime);
+    sliderBar.current.max = trackTime;
+  }, [audioDuration]);
+
+  // useEffect(() => {
+  //   if (audioFilesCurrentTime === 17 && TrackArray[0].audio.loop === false) {
+  //     audioFilesPlay(false);
+  //   }
+  // }, [audioFilesCurrentTime]);
 
   let timerId = 0;
   const startCountingTime = () => {
@@ -80,17 +96,35 @@ function Controlers({}) {
     return min + ':' + secs;
   }
 
-  const audioDuration = Math.floor(TrackArray[0].audio.duration);
-  // const audioDuration1 = TrackArray[0].audio.muted;
-  // console.log(audioDuration1);
+  const range = () => {
+    TrackArray.forEach((song) => {
+      song.audio.currentTime = sliderBar.current.value;
+    });
+    setAudioFilesCurrentTime(sliderBar.current.value);
+  };
+  const rangePlay = () => {
+    sliderBar.current.value = TrackArray[0].audio.currentTime;
+    setAudioFilesCurrentTime(sliderBar.current.value);
+    requestRef.current = requestAnimationFrame(rangePlay);
+  };
 
   return (
     <div>
+      <input
+        className={audioFilesPlay ? 'slider' : 'hila'}
+        onChange={range}
+        type="range"
+        min="0"
+        max="17"
+        defaultValue="0"
+        ref={sliderBar}
+        orient="vertical"
+      />
       <Buttons
         isAudioFilePlay={isAudioFilePlay}
         isAudioFileStop={isAudioFileStop}
         isAudioFileLoop={isAudioFileLoop}
-        audioDuration={audioDuration}
+        // audioDuration={audioDuration}
         audioFilesCurrentTime={audioFilesCurrentTime}
         // timeClick={timeClick}
         formatSecondsAsTime={formatSecondsAsTime}

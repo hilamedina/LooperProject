@@ -26,14 +26,17 @@ function AudioFile({ song, index, toggle }) {
   };
 
   return (
-    <div className="audio-file" style={{ backgroundColor: song.color }}>
-      <div className="title-button-container">
-        <button className="audio-File-button" onClick={mute}>
-          {audioFilesMute ? <FaVolumeMute /> : <FaVolumeUp />}
-        </button>
-        <p className="audio-file-title">{song.name} </p>
+    <>
+      <div className="slider"></div>
+      <div className="audio-file" style={{ backgroundColor: song.color }}>
+        <div className="title-button-container">
+          <button className="audio-File-button" onClick={mute}>
+            {audioFilesMute ? <FaVolumeMute /> : <FaVolumeUp />}
+          </button>
+          <p className="audio-file-title">{song.name} </p>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

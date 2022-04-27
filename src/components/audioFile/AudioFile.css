@@ -27,7 +27,13 @@ list-style:none;
    background-color: transparent;
    border:none;
    font-size:1.2rem;
-
-
 }
+.slider{
+    position:absolute;
+    top:63px;
+    left:570px;
+    background-color: black;
+    width:1px;
+    height:490px;
+    }
 
