@@ -5,14 +5,6 @@
     align-items: center;
 
 }
-/* .slider{
-position:absolute;
-top:63px;
-left:570px;
-background-color: black;
-width:1px;
-height:490px;
-} */
 #range-bar{
     width:500px;
     margin-left:160px;

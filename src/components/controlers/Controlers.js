@@ -12,7 +12,6 @@ function Controlers() {
   const [audioFilesCurrentTime, setAudioFilesCurrentTime] = useState(0);
   // eslint-disable-next-line no-unused-vars
   const [duration, setDuration] = useState(0);
-  // const [audioFilesCurrentTime, setAudioFilesCurrentTime] = useState(0);
   const sliderBar = useRef();
   const requestRef = useRef();
 
@@ -22,12 +21,6 @@ function Controlers() {
     setDuration(trackTime);
     sliderBar.current.max = trackTime;
   }, [audioDuration]);
-
-  // useEffect(() => {
-  //   if (audioFilesCurrentTime === 17 && TrackArray[0].audio.loop === false) {
-  //     setAudioFilesPlay(false);
-  //   }
-  // }, [audioFilesCurrentTime]);
 
   let timerId = 0;
   const startCountingTime = () => {
@@ -42,10 +35,9 @@ function Controlers() {
 
   const isAudioFilePlay = () => {
     console.log('changing play value old value=' + audioFilesPlay);
-    // const prevstate = audioFilesPlay;
-    const play = audioFilesPlay; //play =false, audioFilesPlay=false
-    setAudioFilesPlay(!play); //play =false, audioFilesPlay=true       after
-    // console.log('is it true ?' + audioFilesPlay);
+    const play = audioFilesPlay;
+    setAudioFilesPlay(!play);
+
     if (!play) {
       startCountingTime();
       TrackArray.forEach((song) => {

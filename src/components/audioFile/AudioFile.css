@@ -26,27 +26,6 @@ list-style:none;
    border:none;
    font-size:1.2rem;
 }
-/* .slider{
-    position:absolute;
-    top:63px;
-    left:570px;
-    background-color: black;
-    width:1px;
-    height:490px;    
-     -webkit-appearance: none;
-     animation: move 4s linear;
-    } */
-    /* .paused {
-        animation-play-state: paused;
-      }
-    @keyframes move{
-        0%{
-             transform: translate(0)
-        }
-        100%{
-            transform: translate(450px)
- 
-  } */
 
 @media (max-width: 650px){
     .audio-file{
