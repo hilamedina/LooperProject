@@ -14,7 +14,6 @@
     align-items:center;
     width:100%;
 }
-
 li{
 list-style:none;
 }
@@ -22,18 +21,18 @@ list-style:none;
     display:flex;
     margin-left: 15px;
 }
-
 .audio-File-button{
    background-color: transparent;
    border:none;
    font-size:1.2rem;
 }
-.slider{
+/* .slider{
     position:absolute;
     top:63px;
     left:570px;
     background-color: black;
     width:1px;
-    height:490px;
-    }
+    height:490px;    
+     -webkit-appearance: none;
+    } */
 

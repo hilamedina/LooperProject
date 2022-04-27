@@ -21,7 +21,6 @@ function PlayList() {
             </li>
           ))}
         </ul>
-
         <Controlers></Controlers>
       </div>
     </>

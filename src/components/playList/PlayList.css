@@ -6,11 +6,16 @@
     align-items: center;
     /* border:3px solid yellow; */
 }
-/* .slider{
+.slider{
 position:absolute;
 top:63px;
 left:570px;
 background-color: black;
 width:1px;
 height:490px;
-} */
+}
+#range-bar{
+    width:500px;
+    margin-left:160px;
+  color:black;
+}

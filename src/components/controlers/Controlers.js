@@ -3,12 +3,14 @@ import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import { TrackArray } from '../../audioFiles/TrackArray';
 import Buttons from '../buttons/Buttons';
+import '../audioFile/AudioFile.css';
 
 function Controlers({}) {
   const [audioFilesIsLoop, setAudioFilesIsLoop] = useState(false);
   const [audioFilesPlay, setAudioFilesPlay] = useState(false);
   const [audioFilesStop, setAudioFilesStop] = useState(false);
   const [audioFilesCurrentTime, setAudioFilesCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
   // const [audioFilesCurrentTime, setAudioFilesCurrentTime] = useState(0);
   const sliderBar = useRef();
   const requestRef = useRef();
@@ -16,13 +18,14 @@ function Controlers({}) {
   const audioDuration = Math.floor(TrackArray[0].audio.duration);
   useEffect(() => {
     const trackTime = audioDuration;
-    // setDuration(trackTime);
+    setDuration(trackTime);
     sliderBar.current.max = trackTime;
+    console.log(audioFilesIsLoop, 'useEffect');
   }, [audioDuration]);
 
   // useEffect(() => {
   //   if (audioFilesCurrentTime === 17 && TrackArray[0].audio.loop === false) {
-  //     audioFilesPlay(false);
+  //     setAudioFilesPlay(false);
   //   }
   // }, [audioFilesCurrentTime]);
 
@@ -42,21 +45,26 @@ function Controlers({}) {
 
   const isAudioFilePlay = () => {
     console.log('changing play value old value=' + audioFilesPlay);
+    // const prevstate = audioFilesPlay;
     const play = audioFilesPlay; //play =false, audioFilesPlay=false
-    setAudioFilesPlay(!play); //play =false, audioFilesPlay=true after
+    setAudioFilesPlay(!play); //play =false, audioFilesPlay=true       after
     // console.log('is it true ?' + audioFilesPlay);
     if (!play) {
       startCountingTime();
       TrackArray.forEach((song) => {
         song.audio.play();
+        console.log('hila');
+        requestRef.current = requestAnimationFrame(rangePlay);
       });
     } else {
       TrackArray.forEach((song) => {
         song.audio.pause();
+        cancelAnimationFrame(requestRef.current);
       });
       clearInterval(timerId);
     }
   };
+
   const isAudioFileStop = () => {
     setAudioFilesPlay(false);
     setAudioFilesStop(true);
@@ -68,16 +76,20 @@ function Controlers({}) {
     TrackArray[0].audio.currentTime = 0;
   };
   const isAudioFileLoop = () => {
-    const loop = audioFilesIsLoop; //false
-    setAudioFilesIsLoop(!audioFilesIsLoop); // loop =false audio =true
-    console.log(audioFilesIsLoop);
-    if (audioFilesIsLoop) {
+    const loop = audioFilesIsLoop; // loop =false state= false
+    setAudioFilesIsLoop(!loop); // loop =false state = true
+    console.log(audioFilesIsLoop, 'state');
+    // console.log(loop, 'loop');
+    if (!loop) {
+      console.log(audioFilesIsLoop, 'loop is true');
       //true
       TrackArray.forEach((song) => {
         song.audio.loop = true;
       });
     } else {
       setAudioFilesIsLoop(!audioFilesIsLoop);
+      console.log(audioFilesIsLoop, 'loop is false');
+
       TrackArray.forEach((song) => {
         song.audio.loop = false;
       });
@@ -102,8 +114,9 @@ function Controlers({}) {
     });
     setAudioFilesCurrentTime(sliderBar.current.value);
   };
+
   const rangePlay = () => {
-    sliderBar.current.value = TrackArray[0].audio.currentTime;
+    sliderBar.current.value = Math.floor(TrackArray[0].audio.currentTime);
     setAudioFilesCurrentTime(sliderBar.current.value);
     requestRef.current = requestAnimationFrame(rangePlay);
   };
@@ -111,22 +124,22 @@ function Controlers({}) {
   return (
     <div>
       <input
-        className={audioFilesPlay ? 'slider' : 'hila'}
+        // className="range-bar"
+        // className={audioFilesPlay ? 'slider' : 'slider'}
         onChange={range}
         type="range"
         min="0"
         max="17"
+        id="range-bar"
         defaultValue="0"
         ref={sliderBar}
-        orient="vertical"
+        // orient="vertical"
       />
       <Buttons
         isAudioFilePlay={isAudioFilePlay}
         isAudioFileStop={isAudioFileStop}
         isAudioFileLoop={isAudioFileLoop}
-        // audioDuration={audioDuration}
         audioFilesCurrentTime={audioFilesCurrentTime}
-        // timeClick={timeClick}
         formatSecondsAsTime={formatSecondsAsTime}
         audioFilesIsLoop={audioFilesIsLoop}
         audioFilesPlay={audioFilesPlay}

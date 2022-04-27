@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { FaStop } from 'react-icons/fa';
 import { MdOutlineLoop } from 'react-icons/md';
 import { MdStopCircle } from 'react-icons/md';
@@ -32,7 +33,7 @@ function Buttons({
       <button
         onClick={isAudioFileLoop}
         className={
-          audioFilesIsLoop ? ' btn btn-loop-work' : ' btn btn-not-loop'
+          audioFilesIsLoop ? ' btn btn-not-loop' : ' btn btn-loop-work'
         }
       >
         <MdOutlineLoop />

@@ -27,7 +27,7 @@ function AudioFile({ song, index, toggle }) {
 
   return (
     <>
-      <div className="slider"></div>
+      {/* <div className="slider"></div> */}
       <div className="audio-file" style={{ backgroundColor: song.color }}>
         <div className="title-button-container">
           <button className="audio-File-button" onClick={mute}>
