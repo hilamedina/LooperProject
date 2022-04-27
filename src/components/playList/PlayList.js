@@ -8,12 +8,15 @@ import Controlers from '../controlers/Controlers';
 import '../playList/PlayList.css';
 
 function PlayList() {
+  const toggle = (song) => {
+    song.muted = !song.muted;
+  };
   return (
     <div className="PlayList">
       <ul className="song_containers">
         {TrackArray.map((song, index) => (
           <li className="song" key={index}>
-            <AudioFile song={song} index={index} />
+            <AudioFile song={song} index={index} toggle={toggle} />
           </li>
         ))}
       </ul>

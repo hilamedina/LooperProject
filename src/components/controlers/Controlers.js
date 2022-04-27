@@ -18,12 +18,10 @@ function Controlers({}) {
   };
 
   const setCorrectTime = () => {
-    console.log(audioFilesPlay);
-    // if (audioFilesPlay) {
-    console.log('check');
-    console.log(Math.floor(TrackArray[0].audio.currentTime));
+    // console.log(audioFilesPlay);
+    // console.log('check');
+    // console.log(Math.floor(TrackArray[0].audio.currentTime));
     setAudioFilesCurrentTime(Math.floor(TrackArray[0].audio.currentTime));
-    // }
   };
 
   const isAudioFilePlay = () => {
@@ -40,11 +38,9 @@ function Controlers({}) {
       TrackArray.forEach((song) => {
         song.audio.pause();
       });
-      console.log('clear interval');
       clearInterval(timerId);
     }
   };
-
   const isAudioFileStop = () => {
     setAudioFilesPlay(false);
     setAudioFilesStop(true);
@@ -53,9 +49,8 @@ function Controlers({}) {
     });
     console.log('clear interval');
     clearInterval(timerId);
-    setAudioFilesCurrentTime(0);
+    TrackArray[0].audio.currentTime = 0;
   };
-
   const isAudioFileLoop = () => {
     const loop = audioFilesIsLoop; //false
     setAudioFilesIsLoop(!audioFilesIsLoop); // loop =false audio =true
@@ -86,6 +81,8 @@ function Controlers({}) {
   }
 
   const audioDuration = Math.floor(TrackArray[0].audio.duration);
+  // const audioDuration1 = TrackArray[0].audio.muted;
+  // console.log(audioDuration1);
 
   return (
     <div>

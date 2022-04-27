@@ -5,32 +5,30 @@ import { FaVolumeMute } from 'react-icons/fa';
 import { FaVolumeUp } from 'react-icons/fa';
 import { TrackArray } from '../../audioFiles/TrackArray';
 
-function AudioFile({ song }) {
+function AudioFile({ song, index, toggle }) {
   const [audioFilesMute, setAudioFilesMute] = useState(false);
+
+  const mute = () => {
+    isAudioFileMute();
+    setAudioFilesMute(() => !audioFilesMute);
+    toggle(song.audio);
+  };
 
   const isAudioFileMute = () => {
     let isPlaying = audioFilesMute;
     if (isPlaying) {
-      song.audio.play();
       console.log('work');
       setAudioFilesMute(!isPlaying);
     } else {
       setAudioFilesMute(!isPlaying);
       console.log('stop');
-      song.audio.pause();
     }
   };
-
-  // const toggleMute = () => {
-  //   setIsMute(!isPlaying);
-  //   onMute(track.audio);
-  // };
 
   return (
     <div className="audio-file" style={{ backgroundColor: song.color }}>
       <div className="title-button-container">
-        <button className="audio-File-button" onClick={isAudioFileMute}>
-          {/* <FaVolumeMute /> */}
+        <button className="audio-File-button" onClick={mute}>
           {audioFilesMute ? <FaVolumeMute /> : <FaVolumeUp />}
         </button>
         <p className="audio-file-title">{song.name} </p>
