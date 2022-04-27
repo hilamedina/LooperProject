@@ -17,7 +17,7 @@ function Buttons({
   audioDuration,
 }) {
   return (
-    <div>
+    <div className="Buttons">
       <button onClick={isAudioFilePlay} className="btn">
         {audioFilesPlay ? <MdPauseCircleOutline /> : <MdPlayCircleOutline />}
       </button>
