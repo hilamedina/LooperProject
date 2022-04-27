@@ -37,9 +37,6 @@ function Controlers() {
   };
 
   const setCorrectTime = () => {
-    // console.log(audioFilesPlay);
-    // console.log('check');
-    // console.log(Math.floor(TrackArray[0].audio.currentTime));
     setAudioFilesCurrentTime(Math.floor(TrackArray[0].audio.currentTime));
   };
 
@@ -79,17 +76,12 @@ function Controlers() {
     const loop = audioFilesIsLoop; // loop =false state= false
     setAudioFilesIsLoop(!loop); // loop =false state = true
     console.log(audioFilesIsLoop, 'state');
-    // console.log(loop, 'loop');
     if (!loop) {
-      console.log(audioFilesIsLoop, 'loop is true');
-      //true
       TrackArray.forEach((song) => {
         song.audio.loop = true;
       });
     } else {
       setAudioFilesIsLoop(!audioFilesIsLoop);
-      console.log(audioFilesIsLoop, 'loop is false');
-
       TrackArray.forEach((song) => {
         song.audio.loop = false;
       });
@@ -126,7 +118,7 @@ function Controlers() {
     <div>
       <input
         // className="range-bar"
-        className={audioFilesPlay ? 'slider' : 'hila'}
+        // className={audioFilesPlay ? 'slider' : 'paused'}
         onChange={range}
         type="range"
         min="0"
@@ -134,7 +126,6 @@ function Controlers() {
         id="range-bar"
         defaultValue="0"
         ref={sliderBar}
-        // orient="vertical"
       />
       <Buttons
         isAudioFilePlay={isAudioFilePlay}

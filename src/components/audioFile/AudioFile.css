@@ -34,16 +34,19 @@ list-style:none;
     width:1px;
     height:490px;    
      -webkit-appearance: none;
-     animation: line 17s infinite linear;
-    }
-    @keyframes line{
+     animation: move 4s linear;
+    } */
+    /* .paused {
+        animation-play-state: paused;
+      }
+    @keyframes move{
         0%{
-            width: 0%;
+             transform: translate(0)
         }
         100%{
-    width: 35%;
-  }
-} */
+            transform: translate(450px)
+ 
+  } */
 
 @media (max-width: 650px){
     .audio-file{
