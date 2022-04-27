@@ -12,7 +12,7 @@ function PlayList() {
   };
   return (
     <>
-      {/* <div className="slider"></div> */}
+      <div className="slider"></div>
       <div className="PlayList ">
         <ul className="song_containers">
           {TrackArray.map((song, index) => (

@@ -1,15 +1,16 @@
-import { clear } from '@testing-library/user-event/dist/clear';
 import React from 'react';
 import { useState, useEffect, useRef } from 'react';
 import { TrackArray } from '../../audioFiles/TrackArray';
 import Buttons from '../buttons/Buttons';
 import '../audioFile/AudioFile.css';
 
-function Controlers({}) {
+function Controlers() {
   const [audioFilesIsLoop, setAudioFilesIsLoop] = useState(false);
   const [audioFilesPlay, setAudioFilesPlay] = useState(false);
+  // eslint-disable-next-line no-unused-vars
   const [audioFilesStop, setAudioFilesStop] = useState(false);
   const [audioFilesCurrentTime, setAudioFilesCurrentTime] = useState(0);
+  // eslint-disable-next-line no-unused-vars
   const [duration, setDuration] = useState(0);
   // const [audioFilesCurrentTime, setAudioFilesCurrentTime] = useState(0);
   const sliderBar = useRef();
@@ -20,7 +21,6 @@ function Controlers({}) {
     const trackTime = audioDuration;
     setDuration(trackTime);
     sliderBar.current.max = trackTime;
-    console.log(audioFilesIsLoop, 'useEffect');
   }, [audioDuration]);
 
   // useEffect(() => {
@@ -98,6 +98,7 @@ function Controlers({}) {
   function formatSecondsAsTime(secs) {
     let hours = Math.floor(secs / 3600);
     let min = Math.floor((secs - hours * 3600) / 60);
+    // eslint-disable-next-line no-unused-vars
     let sec = Math.floor(secs - hours * 3600 - min * 60);
     if (min < 10) {
       min = '0' + min;
@@ -125,7 +126,7 @@ function Controlers({}) {
     <div>
       <input
         // className="range-bar"
-        // className={audioFilesPlay ? 'slider' : 'slider'}
+        className={audioFilesPlay ? 'slider' : 'hila'}
         onChange={range}
         type="range"
         min="0"

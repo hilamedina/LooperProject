@@ -1,9 +1,6 @@
 import React from 'react';
-import { useEffect } from 'react';
-import { FaStop } from 'react-icons/fa';
 import { MdOutlineLoop } from 'react-icons/md';
 import { MdStopCircle } from 'react-icons/md';
-import { MdPlayArrow } from 'react-icons/md';
 import { MdPlayCircleOutline } from 'react-icons/md';
 import { MdPauseCircleOutline } from 'react-icons/md';
 import '../buttons/Buttons.css';
@@ -19,9 +16,6 @@ function Buttons({
   timeClick,
   audioDuration,
 }) {
-  const style = { backgroundColor: 'green' };
-  const style2 = { backgroundColor: 'red' };
-
   return (
     <div>
       <button onClick={isAudioFilePlay} className="btn">

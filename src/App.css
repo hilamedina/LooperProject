@@ -1,3 +1,8 @@
+body{
+width:100vw;
+height:100vh;
+overflow:hidden;
+}
 .songs-container {
  display:flex;
  flex-direction:column;
@@ -18,6 +23,7 @@
   width:60%;
   background-color: aqua;
 }
+
 
 
 

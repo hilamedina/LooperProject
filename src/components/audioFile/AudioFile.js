@@ -3,7 +3,6 @@ import '../audioFile/AudioFile.css';
 import { useState } from 'react';
 import { FaVolumeMute } from 'react-icons/fa';
 import { FaVolumeUp } from 'react-icons/fa';
-import { TrackArray } from '../../audioFiles/TrackArray';
 
 function AudioFile({ song, index, toggle }) {
   const [audioFilesMute, setAudioFilesMute] = useState(false);
