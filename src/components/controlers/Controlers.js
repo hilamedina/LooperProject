@@ -24,9 +24,7 @@ function Controlers() {
 
   let timerId = 0;
   const startCountingTime = () => {
-    console.log(Math.floor(TrackArray[0].audio.currentTime));
     timerId = setInterval(() => setCorrectTime(), 1000);
-    console.log('start timer');
   };
 
   const setCorrectTime = () => {
@@ -34,7 +32,6 @@ function Controlers() {
   };
 
   const isAudioFilePlay = () => {
-    console.log('changing play value old value=' + audioFilesPlay);
     const play = audioFilesPlay;
     setAudioFilesPlay(!play);
 
@@ -42,7 +39,6 @@ function Controlers() {
       startCountingTime();
       TrackArray.forEach((song) => {
         song.audio.play();
-        console.log('hila');
         requestRef.current = requestAnimationFrame(rangePlay);
       });
     } else {
@@ -60,14 +56,13 @@ function Controlers() {
     TrackArray.forEach((song) => {
       song.audio.pause();
     });
-    console.log('clear interval');
+
     clearInterval(timerId);
     TrackArray[0].audio.currentTime = 0;
   };
   const isAudioFileLoop = () => {
-    const loop = audioFilesIsLoop; // loop =false state= false
-    setAudioFilesIsLoop(!loop); // loop =false state = true
-    console.log(audioFilesIsLoop, 'state');
+    const loop = audioFilesIsLoop;
+    setAudioFilesIsLoop(!loop);
     if (!loop) {
       TrackArray.forEach((song) => {
         song.audio.loop = true;
@@ -109,8 +104,6 @@ function Controlers() {
   return (
     <div>
       <input
-        // className="range-bar"
-        // className={audioFilesPlay ? 'slider' : 'paused'}
         onChange={range}
         type="range"
         min="0"

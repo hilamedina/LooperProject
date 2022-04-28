@@ -16,11 +16,9 @@ function AudioFile({ song, index, toggle }) {
   const isAudioFileMute = () => {
     let isPlaying = audioFilesMute;
     if (isPlaying) {
-      console.log('work');
       setAudioFilesMute(!isPlaying);
     } else {
       setAudioFilesMute(!isPlaying);
-      console.log('stop');
     }
   };
 
