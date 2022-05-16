@@ -1,6 +1,5 @@
 import React from 'react';
 import { TrackArray } from '../../audioFiles/TrackArray';
-//with default i dont need the {}
 import '../playList/PlayList.css';
 import AudioFile from '../audioFile/AudioFile';
 import Controlers from '../controlers/Controlers';
