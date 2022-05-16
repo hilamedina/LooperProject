@@ -60,7 +60,6 @@ function Controlers() {
       song.audio.currentTime = 0;
     });
     clearInterval(timerId);
-    // TrackArray[0].audio.currentTime = 0;
   };
 
   const isAudioFileLoop = () => {
