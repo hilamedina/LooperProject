@@ -42,8 +42,6 @@ function Controlers() {
         requestRef.current = requestAnimationFrame(rangePlay);
       });
     } else {
-      console.log(audioFilesPlay);
-      console.log('pauseclick', prevState);
       TrackArray.forEach((song) => {
         song.audio.pause();
         cancelAnimationFrame(requestRef.current);
