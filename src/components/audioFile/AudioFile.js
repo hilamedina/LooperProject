@@ -8,26 +8,9 @@ function AudioFile({ song, index, toggle }) {
   const [audioFilesMute, setAudioFilesMute] = useState(false);
 
   const mute = () => {
-    // isAudioFileMute();
     setAudioFilesMute(!audioFilesMute);
-    // setAudioFilesMute(() => !audioFilesMute);
-
     toggle(song.audio);
   };
-
-  // const isAudioFileMute = () => {
-  //   let isPlaying = audioFilesMute; //false
-  //   if (isPlaying) {
-  //     //if true
-  //     setAudioFilesMute(!isPlaying); //state updated to the opposite
-  //   } else {
-  //     setAudioFilesMute(!isPlaying);
-  //   }
-  // };
-
-  // const isAudioFileMute = () => {
-  //   setAudioFilesMute(!audioFilesMute); //state updated to the opposite
-  // };
 
   return (
     <>
