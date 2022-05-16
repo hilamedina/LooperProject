@@ -32,16 +32,18 @@ function Controlers() {
   };
 
   const isAudioFilePlay = () => {
-    const play = audioFilesPlay;
-    setAudioFilesPlay(!play);
-
-    if (!play) {
+    const prevState = audioFilesPlay;
+    const newState = !prevState;
+    setAudioFilesPlay(!prevState);
+    if (newState) {
       startCountingTime();
       TrackArray.forEach((song) => {
         song.audio.play();
         requestRef.current = requestAnimationFrame(rangePlay);
       });
     } else {
+      console.log(audioFilesPlay);
+      console.log('pauseclick', prevState);
       TrackArray.forEach((song) => {
         song.audio.pause();
         cancelAnimationFrame(requestRef.current);
@@ -55,11 +57,12 @@ function Controlers() {
     setAudioFilesStop(true);
     TrackArray.forEach((song) => {
       song.audio.pause();
+      song.audio.currentTime = 0;
     });
-
     clearInterval(timerId);
-    TrackArray[0].audio.currentTime = 0;
+    // TrackArray[0].audio.currentTime = 0;
   };
+
   const isAudioFileLoop = () => {
     const loop = audioFilesIsLoop;
     setAudioFilesIsLoop(!loop);
@@ -98,8 +101,8 @@ function Controlers() {
   const rangePlay = () => {
     sliderBar.current.value = Math.floor(TrackArray[0].audio.currentTime);
     setAudioFilesCurrentTime(sliderBar.current.value);
-    requestRef.current = requestAnimationFrame(rangePlay);
   };
+  requestRef.current = requestAnimationFrame(rangePlay);
 
   return (
     <div>
