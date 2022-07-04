@@ -32,6 +32,7 @@ function Controlers() {
   };
 
   const isAudioFilePlay = () => {
+    //setAudioFilesPlay((prevState)=>{ return !prevState })
     const prevState = audioFilesPlay;
     const newState = !prevState;
     setAudioFilesPlay(!prevState);
@@ -46,7 +47,7 @@ function Controlers() {
         song.audio.pause();
         cancelAnimationFrame(requestRef.current);
       });
-      clearInterval(timerId);
+      // clearInterval(timerId);
     }
   };
 
